@@ -2,13 +2,15 @@
 TERM = "xterm-256color"
 
 [window]
-padding.x = 20
-padding.y = 20
+padding.x = 50
+padding.y = 50
+
+startup_mode = "Maximized"
 
 decorations = "Buttonless"
-opacity = 0.9
+opacity = 0.8
 blur = true
 
 [font]
 #normal.family = "JetBrainsMono Nerd Font"
-size = 16.0
+size = 15.0
