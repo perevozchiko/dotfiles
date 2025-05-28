@@ -111,3 +111,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
+# Created by `pipx` on 2025-05-26 12:59:01
+export PATH="$PATH:/Users/andrei/.local/bin"
