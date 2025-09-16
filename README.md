@@ -36,7 +36,7 @@ This repository contains the **actual configuration files**, and the home direct
 - **Mouse Support**: Click to select panes and resize
 
 ### Development Setup
-- **C++17 Support**: Optimized for Manor Matters project development
+- **C++17 Support**: Optimized for C++ project development
 - **clangd Integration**: Background indexing, compile_commands.json support
 - **Performance Optimized**: Caches ignored in git, fast startup
 
@@ -137,7 +137,7 @@ dotfiles/
 
 ## 🎯 Optimized For
 
-- **Manor Matters Development** (C++17, CMake, clangd)
+- **C++ Development** (C++17, CMake, clangd)
 - **Terminal Workflow** (tmux + neovim)
 - **macOS Environment**
 - **Performance** (fast startup, efficient caching)

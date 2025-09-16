@@ -1,4 +1,4 @@
-# clangd Setup for Manor Matters Project
+# clangd Setup for C++ Project
 
 ## ✅ Current Status: OPTIMIZED
 
