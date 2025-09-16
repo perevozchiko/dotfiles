@@ -73,13 +73,18 @@ if [ -f "$DOTFILES_DIR/zshrc" ]; then
     create_symlink "$DOTFILES_DIR/zshrc" "$HOME/.zshrc"
 fi
 
-# Note: nvim, gitconfig, and fish are managed separately
+# Neovim
+if [ -d "$DOTFILES_DIR/nvim" ]; then
+    backup_file "$HOME/.config/nvim"
+    create_symlink "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
+fi
 
 echo -e "\n${GREEN}✅ Installation complete!${NC}"
 echo -e "\n${BLUE}📋 What was installed:${NC}"
 echo -e "  • Alacritty terminal configuration"
 echo -e "  • Tmux configuration with vim-style navigation"  
 echo -e "  • Zsh shell configuration"
+echo -e "  • Neovim configuration with LSP and plugins"
 
 echo -e "\n${YELLOW}🔄 Next steps:${NC}"
 echo -e "  1. Restart your terminal or run: source ~/.zshrc"

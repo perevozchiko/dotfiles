@@ -7,6 +7,7 @@ My personal configuration files for development environment.
 - **alacritty.toml** → `~/.config/alacritty/alacritty.toml` - Alacritty terminal configuration
 - **tmux.conf** → `~/.tmux.conf` - Tmux configuration with vim-style navigation
 - **zshrc** → `~/.zshrc` - Zsh shell configuration
+- **nvim/** → `~/.config/nvim/` - Neovim configuration with LSP and plugins
 
 ## 🔗 Dotfiles Structure
 
@@ -63,6 +64,9 @@ ln -sf ~/personal/projects/dotfiles/tmux.conf ~/.tmux.conf
 
 # Link shell config
 ln -sf ~/personal/projects/dotfiles/zshrc ~/.zshrc
+
+# Link neovim config
+ln -sf ~/personal/projects/dotfiles/nvim ~/.config/nvim
 ```
 
 ## 📝 Usage
@@ -88,6 +92,14 @@ ln -sf ~/personal/projects/dotfiles/zshrc ~/.zshrc
 - `<Space>f` - Format code
 - `<Space>rn` - Rename symbol
 
+#### Terminal
+- `<Space>th` - Open terminal horizontally (bottom)
+- `<Space>tv` - Open terminal vertically (right)
+- `<Space>tt` - Open terminal in new tab
+- `<Space>tf` - Open floating terminal
+- `Ctrl+q` - Close floating terminal (from terminal mode)
+- `q` - Close floating terminal (from normal mode)
+
 ### Tmux Navigation
 - `Ctrl+h/j/k/l` - Move between panes (works in both tmux and neovim)
 - `Prefix + r` - Reload tmux config
@@ -106,12 +118,21 @@ dotfiles/
 ├── install.sh          # Installation script (executable)
 ├── alacritty.toml      # Alacritty terminal config
 ├── tmux.conf           # Tmux configuration
-└── zshrc               # Zsh shell configuration
+├── zshrc               # Zsh shell configuration
+└── nvim/               # Neovim configuration
+    ├── init.lua        # Main config file
+    ├── lua/            # Lua configuration modules
+    │   ├── options.lua # Editor settings
+    │   ├── keymaps.lua # Key mappings
+    │   ├── plugins/    # Plugin configurations
+    │   └── ...         # Other modules
+    └── README.md       # Neovim-specific documentation
 
 # Home directory structure (after installation):
 ~/.config/alacritty/alacritty.toml -> ~/personal/projects/dotfiles/alacritty.toml
 ~/.tmux.conf -> ~/personal/projects/dotfiles/tmux.conf
 ~/.zshrc -> ~/personal/projects/dotfiles/zshrc
+~/.config/nvim -> ~/personal/projects/dotfiles/nvim
 ```
 
 ## 🎯 Optimized For
