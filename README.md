@@ -1,4 +1,4 @@
-# Andrei's Dotfiles
+# Personal Dotfiles
 
 My personal configuration files for development environment.
 
