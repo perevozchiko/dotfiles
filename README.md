@@ -40,16 +40,100 @@ This repository contains the **actual configuration files**, and the home direct
 - **clangd Integration**: Background indexing, compile_commands.json support
 - **Performance Optimized**: Caches ignored in git, fast startup
 
+## 📋 Requirements
+
+### Minimum System Requirements
+- **Git** - for cloning the repository
+- **Bash** - for running the installation script
+- **Internet connection** - for downloading packages
+
+### Supported Systems
+- **macOS** 10.15+ (Catalina and newer)
+- **Ubuntu** 18.04+ / **Debian** 10+
+- **RedHat** 8+ / **CentOS** 8+ / **Fedora** 30+
+- **Other Linux** distributions (manual package installation required)
+
+### Auto-installed Dependencies
+The installation script will automatically install these if missing:
+- **Homebrew** (macOS only)
+- **curl**, **git** (Linux only - usually pre-installed)
+
 ## 🛠 Installation
 
-### Automatic Setup
+### Automatic Setup (Recommended)
 ```bash
 # Clone repository
 git clone <your-repo-url> ~/personal/projects/dotfiles
 cd ~/personal/projects/dotfiles
 
-# Run setup script
+# Full installation (packages + configs) - RECOMMENDED
 ./install.sh
+
+# Or install only configs (skip package installation)
+./install.sh --skip-packages
+
+# Show help and available options
+./install.sh --help
+```
+
+### 🌍 Cross-Platform Support
+The installation script automatically detects your operating system and installs packages using the appropriate package manager:
+
+| OS | Package Manager | Status |
+|---|---|---|
+| **macOS** | Homebrew | ✅ Full support |
+| **Ubuntu/Debian** | apt + snap | ✅ Full support |
+| **RedHat/CentOS/Fedora** | dnf/yum | ✅ Full support |
+| **Other Linux** | Manual | ⚠️ Manual installation required |
+
+### 📦 Smart Package Installation
+The script intelligently handles package installation:
+
+- **🔍 Auto-detection**: Detects already installed packages to avoid reinstalls
+- **🍺 Homebrew Setup**: Automatically installs Homebrew on macOS if missing
+- **⚡ Fast Installation**: Skips packages that are already present
+- **🎯 Fallback Options**: Uses snap for Alacritty on older Ubuntu versions
+- **🛡️ Error Handling**: Graceful handling of installation failures
+
+### 📋 Packages Installed Automatically
+| Package | Purpose | macOS | Linux |
+|---|---|---|---|
+| **neovim** | Modern text editor with LSP support | ✅ | ✅ |
+| **tmux** | Terminal multiplexer | ✅ | ✅ |
+| **alacritty** | GPU-accelerated terminal | ✅ | ✅ (via snap) |
+| **fd** | Fast file finder (for Telescope) | ✅ | ✅ (fd-find) |
+| **ripgrep** | Fast text search (for Telescope) | ✅ | ✅ |
+| **curl** | HTTP client (for downloads) | Built-in | ✅ |
+| **git** | Version control | Built-in | ✅ |
+
+### 🚀 Installation Examples
+
+**Fresh system setup:**
+```bash
+# Clone and install everything
+git clone <your-repo-url> ~/personal/projects/dotfiles
+cd ~/personal/projects/dotfiles
+./install.sh
+
+# Output example:
+# 🚀 Installing Personal Dotfiles...
+# 🍎 Detected macOS
+# 📦 Installing packages via Homebrew...
+# ✓ neovim already installed
+# 📦 Installing alacritty...
+# ✅ Package installation completed
+```
+
+**Config-only installation:**
+```bash
+# Skip package installation (useful for servers or restricted environments)
+./install.sh --skip-packages
+```
+
+**Help and options:**
+```bash
+# Show all available options
+./install.sh --help
 ```
 
 ### Manual Setup
@@ -110,6 +194,65 @@ ln -sf ~/personal/projects/dotfiles/nvim ~/.config/nvim
 
 Edit any config file normally - changes will be reflected in the repository automatically since they're symlinked.
 
+## ❓ FAQ & Troubleshooting
+
+### Installation Issues
+
+**Q: "Permission denied" when running install.sh**
+```bash
+# Make the script executable
+chmod +x install.sh
+./install.sh
+```
+
+**Q: "Homebrew not found" on macOS**
+- The script will automatically install Homebrew for you
+- If it fails, install manually: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+
+**Q: "Package not found" on Linux**
+```bash
+# Update package lists first
+sudo apt update  # Ubuntu/Debian
+sudo dnf update  # RedHat/Fedora
+
+# Then run the installer
+./install.sh
+```
+
+**Q: Alacritty fails to install on Ubuntu**
+- The script will try snap installation as fallback
+- Manual installation: `sudo add-apt-repository ppa:aslatter/ppa && sudo apt install alacritty`
+
+### Configuration Issues
+
+**Q: Neovim plugins not loading**
+```bash
+# Open Neovim and let plugins install automatically
+nvim
+# Wait for lazy.nvim to install all plugins
+```
+
+**Q: LSP not working for C++**
+- Ensure you have `compile_commands.json` in your project root
+- See `nvim/CLANGD-PROJECT-SETUP.md` for detailed setup
+
+**Q: Terminal colors look wrong**
+- Ensure your terminal supports true colors
+- For tmux: the configuration handles this automatically
+
+### Uninstallation
+
+**Q: How to remove dotfiles?**
+```bash
+# Remove symlinks
+rm ~/.config/nvim ~/.tmux.conf ~/.zshrc ~/.config/alacritty/alacritty.toml
+
+# Restore backups if they exist
+mv ~/.tmux.conf.backup ~/.tmux.conf  # if exists
+mv ~/.zshrc.backup ~/.zshrc          # if exists
+# etc.
+```
+
 ## 📊 Project Structure
 
 ```
@@ -137,10 +280,11 @@ dotfiles/
 
 ## 🎯 Optimized For
 
-- **C++ Development** (C++17, CMake, clangd)
-- **Terminal Workflow** (tmux + neovim)
-- **macOS Environment**
-- **Performance** (fast startup, efficient caching)
+- **🔧 C++ Development** (C++17, CMake, clangd)
+- **⚡ Terminal Workflow** (tmux + neovim integration)
+- **🌍 Cross-Platform** (macOS, Ubuntu, Debian, RedHat, CentOS, Fedora)
+- **🚀 Performance** (fast startup, efficient caching, smart package detection)
+- **🎨 Modern UI** (Catppuccin theme, floating terminals, seamless navigation)
 
 ---
 
