@@ -258,6 +258,7 @@ mv ~/.zshrc.backup ~/.zshrc          # if exists
 ```
 dotfiles/
 ├── README.md           # This file
+├── LICENSE             # MIT License
 ├── install.sh          # Installation script (executable)
 ├── alacritty.toml      # Alacritty terminal config
 ├── tmux.conf           # Tmux configuration
@@ -285,6 +286,18 @@ dotfiles/
 - **🌍 Cross-Platform** (macOS, Ubuntu, Debian, RedHat, CentOS, Fedora)
 - **🚀 Performance** (fast startup, efficient caching, smart package detection)
 - **🎨 Modern UI** (Catppuccin theme, floating terminals, seamless navigation)
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### What this means:
+- ✅ **Use** - Use the code for any purpose
+- ✅ **Modify** - Change and adapt the code as needed
+- ✅ **Distribute** - Share the original or modified code
+- ✅ **Commercial use** - Use in commercial projects
+- ✅ **Private use** - Use in private projects
+- ⚠️ **No warranty** - The code is provided "as is"
 
 ---
 
