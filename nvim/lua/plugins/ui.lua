@@ -105,6 +105,30 @@ return {
       require("Comment").setup()
     end,
   },
+
+  -- Leap - fast navigation with labels
+  {
+    "ggandor/leap.nvim",
+    config = function()
+      require("leap").add_default_mappings()
+      
+      -- Custom keymaps for better experience
+      vim.keymap.set("n", "s", "<Plug>(leap-forward-to)", { desc = "Leap forward to" })
+      vim.keymap.set("n", "S", "<Plug>(leap-backward-to)", { desc = "Leap backward to" })
+      vim.keymap.set("x", "s", "<Plug>(leap-forward-to)", { desc = "Leap forward to" })
+      vim.keymap.set("x", "S", "<Plug>(leap-backward-to)", { desc = "Leap backward to" })
+      vim.keymap.set("o", "s", "<Plug>(leap-forward-to)", { desc = "Leap forward to" })
+      vim.keymap.set("o", "S", "<Plug>(leap-backward-to)", { desc = "Leap backward to" })
+      
+      -- Leap with line mode
+      vim.keymap.set("n", "gs", "<Plug>(leap-forward-till)", { desc = "Leap forward till" })
+      vim.keymap.set("n", "gS", "<Plug>(leap-backward-till)", { desc = "Leap backward till" })
+      vim.keymap.set("x", "gs", "<Plug>(leap-forward-till)", { desc = "Leap forward till" })
+      vim.keymap.set("x", "gS", "<Plug>(leap-backward-till)", { desc = "Leap backward till" })
+      vim.keymap.set("o", "gs", "<Plug>(leap-forward-till)", { desc = "Leap forward till" })
+      vim.keymap.set("o", "gS", "<Plug>(leap-backward-till)", { desc = "Leap backward till" })
+    end,
+  },
 }
 
 
