@@ -106,27 +106,30 @@ return {
     end,
   },
 
-  -- Leap - fast navigation with labels
+  -- Hop - simple and intuitive navigation with labels
   {
-    "ggandor/leap.nvim",
+    "phaazon/hop.nvim",
+    branch = "v2",
     config = function()
-      require("leap").add_default_mappings()
+      require("hop").setup({
+        keys = "asdfghjkl;qwertyuiopzxcvbnm",
+        jump_on_sole_occurrence = true,
+        create_hl_autocmd = true,
+      })
       
-      -- Custom keymaps for better experience
-      vim.keymap.set("n", "s", "<Plug>(leap-forward-to)", { desc = "Leap forward to" })
-      vim.keymap.set("n", "S", "<Plug>(leap-backward-to)", { desc = "Leap backward to" })
-      vim.keymap.set("x", "s", "<Plug>(leap-forward-to)", { desc = "Leap forward to" })
-      vim.keymap.set("x", "S", "<Plug>(leap-backward-to)", { desc = "Leap backward to" })
-      vim.keymap.set("o", "s", "<Plug>(leap-forward-to)", { desc = "Leap forward to" })
-      vim.keymap.set("o", "S", "<Plug>(leap-backward-to)", { desc = "Leap backward to" })
+      -- Simple and intuitive keymaps
+      vim.keymap.set("n", "f", "<cmd>HopChar1<CR>", { desc = "Hop to character" })
+      vim.keymap.set("n", "F", "<cmd>HopChar1BC<CR>", { desc = "Hop to character backward" })
+      vim.keymap.set("n", "t", "<cmd>HopChar1CurrentLineAC<CR>", { desc = "Hop till character" })
+      vim.keymap.set("n", "T", "<cmd>HopChar1CurrentLineBC<CR>", { desc = "Hop till character backward" })
+      vim.keymap.set("n", "gw", "<cmd>HopWord<CR>", { desc = "Hop to word" })
+      vim.keymap.set("n", "gl", "<cmd>HopLine<CR>", { desc = "Hop to line" })
+      vim.keymap.set("n", "gp", "<cmd>HopPattern<CR>", { desc = "Hop to pattern" })
       
-      -- Leap with line mode
-      vim.keymap.set("n", "gs", "<Plug>(leap-forward-till)", { desc = "Leap forward till" })
-      vim.keymap.set("n", "gS", "<Plug>(leap-backward-till)", { desc = "Leap backward till" })
-      vim.keymap.set("x", "gs", "<Plug>(leap-forward-till)", { desc = "Leap forward till" })
-      vim.keymap.set("x", "gS", "<Plug>(leap-backward-till)", { desc = "Leap backward till" })
-      vim.keymap.set("o", "gs", "<Plug>(leap-forward-till)", { desc = "Leap forward till" })
-      vim.keymap.set("o", "gS", "<Plug>(leap-backward-till)", { desc = "Leap backward till" })
+      -- Visual mode
+      vim.keymap.set("v", "f", "<cmd>HopChar1<CR>", { desc = "Hop to character" })
+      vim.keymap.set("v", "F", "<cmd>HopChar1BC<CR>", { desc = "Hop to character backward" })
+      vim.keymap.set("v", "gw", "<cmd>HopWord<CR>", { desc = "Hop to word" })
     end,
   },
 }
