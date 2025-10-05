@@ -1,0 +1,43 @@
+##### ==============================
+#####  Environment
+##### ==============================
+
+[env]
+# Set the terminal type to xterm-256color (for better colors and compatibility)
+TERM = "xterm-256color"
+
+
+##### ==============================
+#####  Window Settings
+##### ==============================
+
+[window]
+# Padding inside the terminal window (horizontal and vertical)
+padding.x = 20   # Add 20px padding left/right
+padding.y = 20   # Add 20px padding top/bottom
+
+# Start Alacritty maximized when launched
+startup_mode = "Maximized"
+
+# Remove window title bar buttons (close, minimize, maximize)
+# Options: "Full", "None", "Transparent", "Buttonless"
+decorations = "Buttonless"
+
+# Make window slightly transparent (0.0 = fully transparent, 1.0 = fully opaque)
+opacity = 0.8
+
+# Apply blur effect behind transparent areas (macOS only)
+blur = true
+
+
+##### ==============================
+#####  Font Settings
+##### ==============================
+
+[font]
+# Set the main font family (must be installed on your system)
+normal.family = "JetBrainsMono Nerd Font"
+
+# Set the font size in points
+size = 14.0
+
