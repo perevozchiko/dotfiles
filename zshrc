@@ -121,3 +121,28 @@ alias ls="eza --tree --level=1 --icons=always --no-time --no-user --no-permissio
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Key bindings for word navigation and editing
+# Enable word navigation with Alt+Left/Right
+bindkey "^[[1;3C" forward-word    # Alt+Right
+bindkey "^[[1;3D" backward-word   # Alt+Left
+
+# Alternative key bindings for word navigation
+bindkey "^[f" forward-word        # Alt+F
+bindkey "^[b" backward-word       # Alt+B
+
+# Word deletion
+bindkey "^[d" kill-word           # Alt+D - delete word forward
+bindkey "^w" backward-kill-word   # Ctrl+W - delete word backward
+
+# Line navigation
+bindkey "^A" beginning-of-line    # Ctrl+A - beginning of line
+bindkey "^E" end-of-line          # Ctrl+E - end of line
+
+# Character navigation
+bindkey "^F" forward-char         # Ctrl+F - forward char
+bindkey "^B" backward-char        # Ctrl+B - backward char
+
+# Line editing
+bindkey "^U" backward-kill-line   # Ctrl+U - delete to beginning
+bindkey "^K" kill-line            # Ctrl+K - delete to end
