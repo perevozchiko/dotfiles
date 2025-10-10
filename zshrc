@@ -148,3 +148,19 @@ bindkey "^B" backward-char        # Ctrl+B - backward char
 # Line editing
 bindkey "^U" backward-kill-line   # Ctrl+U - delete to beginning
 bindkey "^K" kill-line            # Ctrl+K - delete to end
+
+# ============================================================
+# Оптимизация gitstatusd (Powerlevel10k)
+# ============================================================
+
+# Очистка gitstatusd процессов при выходе из шелла
+function cleanup_gitstatusd() {
+  local my_pid=$$
+  pkill -P $my_pid gitstatusd 2>/dev/null
+}
+trap cleanup_gitstatusd EXIT
+
+# Периодическая очистка старых временных файлов gitstatusd (10% вероятность)
+if (( RANDOM % 10 == 0 )); then
+  find /tmp -name '.gitstatus.*' -type d -mtime +1 -exec rm -rf {} + 2>/dev/null
+fi
