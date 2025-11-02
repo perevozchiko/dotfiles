@@ -12,6 +12,7 @@ set noerrorbells             " Disable error bell sounds
 set novisualbell             " Disable visual bell (screen flashing)
 set mouse=a                  " Enable mouse support in all modes
 set clipboard=unnamed        " Use system clipboard for yank/paste operations
+set clipboard+=unnamedplus   " Also use + register (X11 clipboard) for better compatibility
 au BufRead,BufNewFile *.cpp,*.hpp,*.c,*.h set filetype=cpp  " Set filetype to cpp for C/C++ files
 autocmd FileType c,cpp setlocal cindent      " Enable C-style indentation for C/C++ files
 autocmd FileType c,cpp setlocal smartindent  " Enable smart indentation for C/C++ files
@@ -44,4 +45,19 @@ else
   nnoremap <C-j> <C-w>j
   nnoremap <C-k> <C-w>k
   nnoremap <C-l> <C-w>l
+endif
+
+" ===== CLIPBOARD INTEGRATION =====
+" Enhanced clipboard functionality for macOS
+if has('macunix')
+  " Copy to macOS clipboard in visual mode
+  vnoremap <C-c> :w !pbcopy<CR><CR>
+  " Paste from macOS clipboard
+  nnoremap <C-v> :r !pbpaste<CR>
+  inoremap <C-v> <Esc>:r !pbpaste<CR>a
+  
+  " Alternative mappings for copying whole lines or selections
+  nnoremap <leader>y :.w !pbcopy<CR><CR>
+  vnoremap <leader>y :w !pbcopy<CR><CR>
+  nnoremap <leader>p :r !pbpaste<CR>
 endif
