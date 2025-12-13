@@ -1,0 +1,7 @@
+# ==============================
+#  skhd hotkey configuration
+# ==============================
+
+# Launch Alacritty: Ctrl + Cmd + T
+ctrl + cmd - t : open -a Alacritty
+
