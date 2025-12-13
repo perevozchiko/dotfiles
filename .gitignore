@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Vim/Neovim cache
+nvim/plugin/
+nvim/.netrwhist
+*.swp
+*.swo
+*~
+
+# Backup files
+*.backup
+*.bak
+*.old
+
+# Logs
+*.log
+
+# Personal/sensitive data
+*_local
+*_private
+
