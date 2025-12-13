@@ -1,9 +1,18 @@
 ##### ==============================
+#####  General
+##### ==============================
+
+[general]
+# Automatically reload config when file changes
+live_config_reload = true
+
+
+##### ==============================
 #####  Environment
 ##### ==============================
 
 [env]
-# Set the terminal type to xterm-256color (for better colors and compatibility)
+# Terminal type (for tmux/nvim compatibility)
 TERM = "xterm-256color"
 
 
@@ -12,22 +21,30 @@ TERM = "xterm-256color"
 ##### ==============================
 
 [window]
-# Padding inside the terminal window (horizontal and vertical)
-padding.x = 20   # Add 20px padding left/right
-padding.y = 20   # Add 20px padding top/bottom
+# Window padding (pixels)
+padding.x = 20
+padding.y = 20
 
-# Start Alacritty maximized when launched
+# Start maximized
 startup_mode = "Maximized"
 
-# Remove window title bar buttons (close, minimize, maximize)
+# Remove title bar buttons (macOS)
 # Options: "Full", "None", "Transparent", "Buttonless"
 decorations = "Buttonless"
 
-# Make window slightly transparent (0.0 = fully transparent, 1.0 = fully opaque)
+# Window opacity (0.0 - 1.0)
 opacity = 0.8
 
-# Apply blur effect behind transparent areas (macOS only)
+# Background blur (macOS only)
 blur = true
+
+# Window title
+title = ""
+dynamic_title = true
+
+# Option key acts as Alt/Meta (for tmux/nvim keybindings)
+# Options: "OnlyLeft", "OnlyRight", "Both", "None"
+option_as_alt = "Both"
 
 
 ##### ==============================
@@ -35,9 +52,205 @@ blur = true
 ##### ==============================
 
 [font]
-# Set the main font family (must be installed on your system)
 normal.family = "JetBrainsMono Nerd Font"
+normal.style = "Regular"
 
-# Set the font size in points
+bold.family = "JetBrainsMono Nerd Font"
+bold.style = "Bold"
+
+italic.family = "JetBrainsMono Nerd Font"
+italic.style = "Italic"
+
+bold_italic.family = "JetBrainsMono Nerd Font"
+bold_italic.style = "Bold Italic"
+
 size = 14.0
 
+# Line spacing and glyph offset
+offset.x = 0
+offset.y = 2
+
+
+##### ==============================
+#####  Cursor
+##### ==============================
+
+[cursor]
+# Shape: "Block", "Underline", "Beam"
+style.shape = "Block"
+style.blinking = "On"
+
+# Hollow cursor when window is unfocused
+unfocused_hollow = true
+
+# Blink interval (ms)
+blink_interval = 750
+blink_timeout = 5
+
+
+##### ==============================
+#####  Scrolling
+##### ==============================
+
+[scrolling]
+# Scrollback history (number of lines)
+history = 50000
+
+# Scroll speed multiplier
+multiplier = 3
+
+
+##### ==============================
+#####  Mouse
+##### ==============================
+
+[mouse]
+# Hide mouse cursor while typing
+hide_when_typing = true
+
+
+##### ==============================
+#####  Selection
+##### ==============================
+
+[selection]
+# Automatically copy selection to clipboard
+save_to_clipboard = true
+
+
+##### ==============================
+#####  Bell
+##### ==============================
+
+[bell]
+# Disable visual bell (0 = off)
+duration = 0
+
+
+##### ==============================
+#####  Keyboard
+##### ==============================
+
+[keyboard]
+
+[[keyboard.bindings]]
+key = "N"
+mods = "Command"
+action = "SpawnNewInstance"
+
+[[keyboard.bindings]]
+key = "K"
+mods = "Command"
+chars = "\u000C"  # Send Ctrl+L to clear screen
+
+[[keyboard.bindings]]
+key = "F"
+mods = "Command|Control"
+action = "ToggleFullscreen"
+
+[[keyboard.bindings]]
+key = "Plus"
+mods = "Command"
+action = "IncreaseFontSize"
+
+[[keyboard.bindings]]
+key = "Minus"
+mods = "Command"
+action = "DecreaseFontSize"
+
+[[keyboard.bindings]]
+key = "Key0"
+mods = "Command"
+action = "ResetFontSize"
+
+
+##### ==============================
+#####  Colors (Catppuccin Mocha)
+##### ==============================
+
+[colors.primary]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+dim_foreground = "#7f849c"
+bright_foreground = "#cdd6f4"
+
+[colors.cursor]
+text = "#1e1e2e"
+cursor = "#f5e0dc"
+
+[colors.vi_mode_cursor]
+text = "#1e1e2e"
+cursor = "#b4befe"
+
+[colors.search.matches]
+foreground = "#1e1e2e"
+background = "#a6adc8"
+
+[colors.search.focused_match]
+foreground = "#1e1e2e"
+background = "#a6e3a1"
+
+[colors.hints.start]
+foreground = "#1e1e2e"
+background = "#f9e2af"
+
+[colors.hints.end]
+foreground = "#1e1e2e"
+background = "#a6adc8"
+
+[colors.selection]
+text = "#1e1e2e"
+background = "#f5e0dc"
+
+[colors.normal]
+black   = "#45475a"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#f5c2e7"
+cyan    = "#94e2d5"
+white   = "#bac2de"
+
+[colors.bright]
+black   = "#585b70"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#f5c2e7"
+cyan    = "#94e2d5"
+white   = "#a6adc8"
+
+[colors.dim]
+black   = "#45475a"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#f5c2e7"
+cyan    = "#94e2d5"
+white   = "#bac2de"
+
+
+##### ==============================
+#####  Hints (URL detection)
+##### ==============================
+
+[hints]
+alphabet = "jfkdls;ahgurieowpq"
+
+[[hints.enabled]]
+regex = "(https?://)[^\\s]+"
+hyperlinks = true
+command = "open"
+post_processing = true
+persist = false
+
+[hints.enabled.mouse]
+enabled = true
+mods = "Command"
+
+[hints.enabled.binding]
+key = "U"
+mods = "Command|Shift"
