@@ -397,13 +397,58 @@ Complete reference for Alacritty + tmux + zsh + Neovim (NvChad)
 
 ---
 
-## Git (gitsigns.nvim)
+## Git Integration
+
+### Neogit (Full Git UI)
+
+| Hotkey | Action |
+|--------|--------|
+| `<Leader>gg` | Open Neogit (Space+g+g) |
+| `Tab` | Expand section/hunk (in Neogit) |
+| `s` | Stage file/hunk |
+| `S` | Stage all |
+| `u` | Unstage file/hunk |
+| `U` | Unstage all |
+| `x` | Discard hunk/file |
+| `c` | Commit menu |
+| `P` | Push menu |
+| `p` | Pull menu |
+| `b` | Branch menu |
+| `l` | Log |
+| `d` | Diff |
+| `Enter` | Open diff/file |
+| `?` | Show help |
+| `q` | Close Neogit |
+
+### Diffview (Visual Diff)
+
+| Hotkey | Action |
+|--------|--------|
+| `<Leader>gd` | Open diff of current changes |
+| `<Leader>gh` | File history (current file) |
+| `<Leader>gH` | Project history |
+| `<Leader>gc` | Close diffview |
+| `]c` | Next change (in diff) |
+| `[c` | Previous change (in diff) |
+| `<Tab>` | Switch between files |
+
+Commands:
+- `:DiffviewOpen` — diff current changes
+- `:DiffviewOpen HEAD~2` — diff with commit
+- `:DiffviewOpen main` — diff with branch
+- `:DiffviewOpen origin/main...HEAD` — diff between branches
+
+### Gitsigns (Inline Git)
 
 | Hotkey | Action |
 |--------|--------|
 | `]c` | Next git hunk |
 | `[c` | Previous git hunk |
-| `<Leader>rh` | Reset hunk |
+| `<Leader>hs` | Stage hunk (normal mode) |
+| `<Leader>hs` | Stage selected lines (visual mode) |
+| `<Leader>hr` | Reset (discard) hunk |
+| `<Leader>hr` | Reset selected lines (visual mode) |
+| `<Leader>hR` | Reset entire file |
 | `<Leader>ph` | Preview hunk |
 | `<Leader>gb` | Git blame line |
 | `<Leader>td` | Toggle deleted lines |
@@ -526,8 +571,9 @@ In Mason UI:
 
 ---
 
-## Quick Workflow Example
+## Quick Workflow Examples
 
+### Basic Editing:
 ```
 1. Open nvim
 2. <Leader>ff               → Find and open file
@@ -538,6 +584,34 @@ In Mason UI:
 7. <Leader>e                → Toggle file tree
 8. <Leader>fw               → Search in project
 9. <Leader>x                → Close buffer
+```
+
+### Git Workflow:
+```
+1. <Leader>gd               → View all changes (diffview)
+2. <Leader>gg               → Open Neogit
+3. Tab                      → Expand hunks
+4. s                        → Stage specific hunks
+5. (or v to select lines → s to stage partial)
+6. c c                      → Commit
+7. (write message) :wq
+8. P p                      → Push
+```
+
+### Stage Partial Changes:
+```
+1. ]c                       → Jump to next change
+2. <Leader>ph               → Preview hunk
+3. v                        → Visual mode (select lines)
+4. <Leader>hs               → Stage only selected lines
+```
+
+### Discard Changes:
+```
+1. ]c                       → Jump to hunk
+2. <Leader>ph               → Preview (check if need to discard)
+3. <Leader>hr               → Discard hunk
+(or v to select → <Leader>hr to discard lines)
 ```
 
 ---
