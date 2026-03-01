@@ -120,7 +120,7 @@ alias gps="git push"            # Push
 alias gl="git log --oneline --graph --decorate"
 alias gd="git diff"
 alias gco="git checkout"
-alias gpp="git pull --rebase && git submodule update --init --recursive && git push"
+alias gpp="git pull --rebase --autostash && git submodule update --init --recursive && git push"
 
 # Neovim
 alias vim="nvim"
@@ -158,3 +158,18 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     export HOMEBREW_NO_ENV_HINTS=1
 fi
 
+
+# Memory management
+alias memcheck='~/projects/dev/utils/memory_monitor.sh'
+alias memclean='~/projects/dev/utils/memory_monitor.sh --clean'
+alias purgemem='sudo purge && echo "✅ Память очищена"'
+
+# Created by PrepareEnvironment.command on 2026-01-30 10:46
+export CCACHE_CONFIGPATH="$HOME/.ccache/ccache.conf"
+
+# Readline-like hotkeys
+bindkey -e
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+bindkey -M viins '^A' beginning-of-line
+bindkey -M viins '^E' end-of-line
